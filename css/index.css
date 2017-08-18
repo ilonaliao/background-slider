@@ -74,8 +74,9 @@ body {
   position: absolute;
   bottom: 5%;
   text-align: center;
+  z-index: 2;
 }
-/* line 13, ../sass/index.scss */
+/* line 14, ../sass/index.scss */
 .nav span {
   display: inline-block;
   width: .3em;
@@ -84,20 +85,29 @@ body {
   border-radius: 50px;
   opacity: .6;
   margin: .5em;
+  cursor: pointer;
 }
-/* line 22, ../sass/index.scss */
+/* line 24, ../sass/index.scss */
 .nav span.actived {
   background: #fff;
   opacity: .9;
 }
 
-/* line 30, ../sass/index.scss */
+/* line 31, ../sass/index.scss */
+.slider a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* line 37, ../sass/index.scss */
 .slider .item {
+  display: block;
   opacity: 0;
   position: absolute;
   transition: opacity 1s;
 }
-/* line 38, ../sass/index.scss */
+/* line 46, ../sass/index.scss */
 .slider .item.actived {
   opacity: 1;
+  z-index: 1;
 }
