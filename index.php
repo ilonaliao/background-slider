@@ -32,29 +32,43 @@
 
         //step2. image resize to screen
         image = getImageSize(node.slider.find('img.actived'));
+        imageResize('first');
         $(window).resize(function() {
-            clearTimeout(timer)
+            clearTimeout(timer);
             screen.getsize();
             xx("resize:w:"+screen.width+":h:"+screen.height);
-            imageResize();
+            removeImageStyle(node.items);
+            imageResize('resize');
             setActiveImage(0);
         });
 
-        imageResize();
-        function imageResize(){
-            node.items.each(function (index) {
-                //裡面不會依照img順序執行，會依照「先載完的圖片」執行
-                $(this).on('load', function(){
-//                xx($(this));
-                    fitImageToScreen($(this),getImageSize($(this)));
+        //step3. start slider animate
+        setActiveImage(0);
+
+
+        
+        function imageResize(status='first'){
+            if(status == 'resize'){
+                node.items.each(function (index) {
+                   fitImageToScreen($(this),getImageSize($(this)));
                 });
-            });
+            }else{
+                node.items.each(function (index) {
+                    //裡面不會依照img順序執行，會依照「先載完的圖片」執行(第一次載才會觸發on load)
+                    $(this).on('load', function(){
+                        xx($(this));
+                        fitImageToScreen($(this),getImageSize($(this)));
+                    });
+                });
+            }
+
+        }
+
+        function removeImageStyle(dom){
+            dom.removeAttr("style");
         }
 
 
-        //step3. start slider animate
-
-        setActiveImage(0);
         function setActiveImage(itemIndex){
             node.items.each(function (index) {
                 if(index == itemIndex){
