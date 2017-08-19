@@ -7,9 +7,9 @@
 </head>
 <body>
 <div class="slider">
-    <a href="http://www.google.com" class="item "><img src="http://fredchung.tw/upload/bg/bg_commercial.jpg"></a>
+    <a href="http://www.google.com" class="item"><img src="http://fredchung.tw/upload/bg/bg_commercial.jpg"></a>
     <a href="http://www.pchome.com" class="item"><img src="http://www.fotobeginner.com/wp-content/uploads/2014/09/500pxGlobalWalk.jpg"></a>
-    <a href="https://www.airbnb.com.tw" class="item actived"><img src="https://pbs.twimg.com/media/C1FqvS_XAAAcRX-.jpg"></a><!-- 正方形欸 -->
+    <a href="https://www.airbnb.com.tw" class="item"><img src="https://pbs.twimg.com/media/C1FqvS_XAAAcRX-.jpg"></a><!-- 正方形欸 -->
     <a href="https://www.amazon.com" class="item"><img src="https://s-media-cache-ak0.pinimg.com/originals/fb/de/63/fbde63c09f3e41f365623ad26589d6c6.jpg"></a>
     <a href="http://www.asos.com" class="item"><img src="https://drscdn.500px.org/photo/216370631/m%3D900_s%3D1_k%3D1_a%3D1/v2?webp=true&v=0&sig=ce2fef7759b2c34bbc121aef08bd42032c1bbb190812d36307ef95d5018eb6cb"></a>
     <div class="nav"></div>
@@ -33,7 +33,7 @@
         node.cycles = node.nav.find('span');
 
         //step2. image resize to screen
-        image = getImageSize(node.slider.find('img.actived'));
+//        image = getImageSize(node.slider.find('img.actived'));
         imageResize('first');
         $(window).resize(function() {
             clearTimeout(timer);
@@ -44,7 +44,7 @@
         });
 
         //step3. start slider animate
-//        setActiveImage(0);
+        setActiveImage(0);
 
         //step4. click nav
         $('body').on('click','span',function(){
@@ -84,7 +84,7 @@
                     timer = setTimeout(function(index){
                         if(index == node.items.length) index = 0;
                         setActiveImage(index);
-                    }, 3000, index + 1);
+                    }, 2000, index + 1);
                 }
             });
         }
